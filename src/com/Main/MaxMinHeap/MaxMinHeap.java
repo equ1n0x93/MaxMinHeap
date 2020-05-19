@@ -91,7 +91,7 @@ public class MaxMinHeap {
             return;
 
         // Find index of smallest child / grandchild
-        int minChildIndex = getSmallestIndexUpToGrandChild(index, false);
+        int minChildIndex = getSmallestIndexUpToGrandChild(index);
 
         // min child is a grandchild of i
         if (isGrandChildOf(index, minChildIndex)) {
@@ -118,7 +118,7 @@ public class MaxMinHeap {
             return;
 
         // Find index of smallest child / grandchild
-        int maxChildIndex = getLargestIndexUpToGrandChild(index, false);
+        int maxChildIndex = getLargestIndexUpToGrandChild(index);
 
         // max child is a grandchild of i
         if (isGrandChildOf(index, maxChildIndex)) {
@@ -260,7 +260,7 @@ public class MaxMinHeap {
         return leftestGrandChildren <= indexToCheck & indexToCheck <= rightestGrandChild;
     }
 
-    private int getSmallestIndexUpToGrandChild(int parentIndex, boolean includeParent) {
+    private int getSmallestIndexUpToGrandChild(int parentIndex) {
         /*
         This method returns the index of the descendant with the minimal value up to a grand child for a given parent node (2 depths)
         It does it with simple comparisons of all the existing children / grandchildren of a given node.
@@ -276,11 +276,6 @@ public class MaxMinHeap {
         int rightGrandChildRightIndex = getRightChildIndex(rightChildIndex);
         int smallestIndex = -1;
         int smallestValue = Integer.MAX_VALUE;
-
-        if (includeParent) {
-            smallestIndex = parentIndex;
-            smallestValue = heapArray.get(parentIndex);
-        }
 
 
         // Check left child
@@ -326,7 +321,7 @@ public class MaxMinHeap {
         return smallestIndex;
     }
 
-    private int getLargestIndexUpToGrandChild(int parentIndex, boolean includeParent) {
+    private int getLargestIndexUpToGrandChild(int parentIndex) {
         /*
         This method returns the index of the descendant with the maximal value up to a grand child for a given parent node (2 depths)
         It does it with simple comparisons of all the existing children / grandchildren of a given node.
@@ -342,11 +337,6 @@ public class MaxMinHeap {
         int rightGrandChildRightIndex = getRightChildIndex(rightChildIndex);
         int largestIndex = -1;
         int largestValue = Integer.MIN_VALUE;
-
-        if (includeParent) {
-            largestIndex = parentIndex;
-            largestValue = heapArray.get(parentIndex);
-        }
 
         // Check left child
         if (indexExistInHeap(leftChildIndex)) {
