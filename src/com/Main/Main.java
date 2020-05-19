@@ -24,6 +24,7 @@ public class Main {
         INSERT,
         DELETE,
         HEAPIFY,
+        PRINT_HEAP,
         BAD_INPUT,
         EXIT
     }
@@ -71,21 +72,21 @@ public class Main {
                 case EXTRACT_MAX:
                     int removedMax = mmHeap.heapExtractMax();
                     System.out.println("Removed max value - " + removedMax);
-                    System.out.print("New Heap (after removed max value) -" );
-                    mmHeap.printHeap();
                     System.out.println("#############################################################################");
                     break;
                 case EXTRACT_MIN:
                     int removedMin = mmHeap.heapExtractMin();
                     System.out.println("Removed min value - " + removedMin);
-                    System.out.print("New Heap (after removed min value) -" );
-                    mmHeap.printHeap();
                     System.out.println("#############################################################################");
                     break;
                 case HEAPIFY:
                     System.out.print("Enter the index of the heap array you want to heapify: ");
                     int valueToHeapify = Integer.parseInt(inputScanner.nextLine());
                     mmHeap.heapify(valueToHeapify);
+                    System.out.println("#############################################################################");
+                    break;
+                case PRINT_HEAP:
+                    mmHeap.printHeap();
                     System.out.println("#############################################################################");
                     break;
                 case EXIT:
@@ -104,7 +105,7 @@ public class Main {
         String selectedOption;
 
         if (heapAlreadyBuilt) {
-            System.out.println("\nOptions:\n1.Build-Heap\n2.Heap-Extract-Max\n3.Heap-Extract-Min\n4.Heap-Insert\n5.Heap-Delete\n6.Heapify\n7.Exit");
+            System.out.println("\nOptions:\n1.Build-Heap\n2.Heap-Extract-Max\n3.Heap-Extract-Min\n4.Heap-Insert\n5.Heap-Delete\n6.Heapify\n7.Print Heap\n8.Exit");
             System.out.print("Enter selection: ");
             selectedOption = inputScanner.nextLine();  // Read user input
             switch (selectedOption) {
@@ -121,6 +122,8 @@ public class Main {
                 case "6":
                     return MenuOption.HEAPIFY;
                 case "7":
+                    return MenuOption.PRINT_HEAP;
+                case "8":
                     return MenuOption.EXIT;
                 default:
                     System.out.println("Bad user input - '" + selectedOption + "', try again.");
