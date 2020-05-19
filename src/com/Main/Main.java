@@ -99,17 +99,6 @@ public class Main {
         System.out.println("Goodbye!");
     }
 
-    public static ArrayList<Integer> getArrayFromInputFile(String inputFilePath) throws IOException{
-        ArrayList<Integer> inputArray = new ArrayList<>();
-
-        Scanner scanner = new Scanner(new File(inputFilePath));
-        while(scanner.hasNextInt())
-        {
-            inputArray.add(scanner.nextInt());
-        }
-        return inputArray;
-    }
-
     public static MenuOption showUserMenuAndGetUserInput(boolean heapAlreadyBuilt){
         Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object for user input
         String selectedOption;
